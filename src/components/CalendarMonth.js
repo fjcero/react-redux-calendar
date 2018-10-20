@@ -11,6 +11,7 @@ class CalendarMonth extends React.Component {
     reminder: null,
     weekIndex: null,
     dayIndex: null,
+    day: null
   };
 
   onOpenModal = (e, payload = {}) => {
@@ -26,12 +27,13 @@ class CalendarMonth extends React.Component {
       reminder: null,
       weekIndex: null,
       dayIndex: null,
+      day: null
     });
   };
 
   render() {
     const { month, actions } = this.props;
-    const { showForm, weekIndex, dayIndex, reminder } = this.state;
+    const { showForm, day, weekIndex, dayIndex, reminder } = this.state;
 
     return (
       <div className="calendar__month">
@@ -43,7 +45,7 @@ class CalendarMonth extends React.Component {
                   className={classNames('calendar__day', {
                     calendar__day__sibling: day.siblingMonth !== 0,
                   })}
-                  onClick={() => this.onOpenModal(null, { weekIndex, dayIndex })}
+                  onClick={() => this.onOpenModal(null, { day, weekIndex, dayIndex })}
                 >
                   <span className="calendar__day__label">{day.date.getDate()}</span>
                   {day.reminders.length > 0 &&
@@ -51,7 +53,7 @@ class CalendarMonth extends React.Component {
                       <Reminder
                         key={reminder.uuid}
                         reminder={reminder}
-                        onUpdate={() => this.onOpenModal(null, { weekIndex, dayIndex, reminder })}
+                        onUpdate={() => this.onOpenModal(null, { day, weekIndex, dayIndex, reminder })}
                       />
                     ))}
                 </div>
@@ -63,6 +65,7 @@ class CalendarMonth extends React.Component {
           <ReminderForm
             reminder={reminder}
             weekIndex={weekIndex}
+            day={day}
             dayIndex={dayIndex}
             onCreate={actions.createReminder}
             onUpdate={actions.updateReminder}

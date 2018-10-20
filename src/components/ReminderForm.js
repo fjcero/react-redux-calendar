@@ -17,6 +17,13 @@ class ReminderForm extends React.Component {
     };
   }
 
+  // getHour = () => {}
+
+  // formatDate = () => {
+  //   // const time = e.target.value.split(':');
+  //   // console.log({ a: this.props.date });
+  // }
+
   handleSubmit = e => {
     e.preventDefault();
     const { weekIndex, dayIndex, reminder } = this.props;
@@ -49,11 +56,17 @@ class ReminderForm extends React.Component {
   };
 
   handleStartTimeChange = e => {
-    this.setState({ startTime: e.target.value });
+    this.setState({
+      startTime: e.target.value,
+      startTimeDate: null,
+    });
   };
 
   handleEndTimeChange = e => {
-    this.setState({ endTime: e.target.value });
+    this.setState({
+      endTime: e.target.value,
+      endTimeDate: null,
+    });
   };
 
   render() {
