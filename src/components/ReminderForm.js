@@ -51,3 +51,5 @@ class ReminderForm extends React.Component {
     );
   }
 }
+
+export default ReminderForm;

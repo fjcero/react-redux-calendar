@@ -50,6 +50,7 @@ code {
   right: 0px;
   padding: 3px;
   background: rgba(0, 0, 0, 0.1);
+  z-index: 20;
 }
 .calendar__day__sibling {
   background: #ddd;
@@ -60,8 +61,53 @@ code {
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 3px 6px;
   margin: 3px;
+  position: relative;
 }
 .reminder__delete {
-  color: red;
-  right: 0;
+  cursor: pointer;
+  color: white;
+  background: red;
+  font-size: 1rem;
+  position: absolute;
+  right: 20px;
+  border-radius: 50%;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.4);
+  width: 5px;
+  height: 5px;
+}
+
+.popover__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 100;
+}
+
+.popover__wrapper {
+  width: 480px;
+  min-height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate3d(calc(40% + 24px), -68%, 0);
+  z-index: 101;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
+}
+
+.popover__arrow {
+  width: 24px;
+  height: 48px;
+  position: absolute;
+  left: -24px;
+  top: 68%;
+  filter: drop-shadow(-5px 0px 3px rgba(0, 0, 0, 0.1));
+}
+
+.popover__arrow__tip {
+  fill: white;
 }
