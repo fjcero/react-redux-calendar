@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Reminder = ({ reminder, onDelete, onUpdate }) => {
-  console.log({ reminder });
   return (
     <div className="reminder" style={{ background: reminder.color }} onClick={() => onUpdate()}>
       {reminder.description}
@@ -9,6 +8,7 @@ const Reminder = ({ reminder, onDelete, onUpdate }) => {
         className="reminder__delete"
         onClick={e => {
           e.preventDefault();
+          e.stopPropagation();
           onDelete(reminder);
         }}
       >

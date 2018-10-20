@@ -1,6 +1,5 @@
 import * as types from '../constants/action-types';
 import { getMonth } from '../helpers';
-import { Reminder } from '../lib/Reminder';
 
 const defaultState = {
   month: getMonth(null, {
@@ -26,9 +25,7 @@ const calendar = (state = defaultState, action) => {
       const { payload } = action;
 
       const updatedMonth = state.month.slice();
-      updatedMonth[payload.weekIndex][payload.dayIndex].reminders.push(
-        new Reminder(payload.reminder)
-      );
+      updatedMonth[payload.weekIndex][payload.dayIndex].reminders.push(payload.reminder);
 
       return { ...state, month: updatedMonth };
     }
@@ -36,9 +33,9 @@ const calendar = (state = defaultState, action) => {
       const { payload } = action;
 
       const updatedMonth = state.month.slice();
-      // updatedMonth[payload.weekIndex][payload.dayIndex].reminders.push(
-      //   new Reminder(payload.reminder)
-      // );
+      updatedMonth[payload.weekIndex][payload.dayIndex].reminders.map(
+        reminder => (reminder.uuid === payload.reminder.uuid ? payload.reminder : reminder)
+      );
 
       return { ...state, month: updatedMonth };
     }
@@ -46,9 +43,9 @@ const calendar = (state = defaultState, action) => {
       const { payload } = action;
 
       const updatedMonth = state.month.slice();
-      // updatedMonth[payload.weekIndex][payload.dayIndex].reminders.push(
-      //   new Reminder(payload.reminder)
-      // );
+      updatedMonth[payload.weekIndex][payload.dayIndex].reminders = updatedMonth[payload.weekIndex][
+        payload.dayIndex
+      ].reminders.filter(reminder => reminder.uuid !== payload.reminder.uuid);
 
       return { ...state, month: updatedMonth };
     }

@@ -5,7 +5,8 @@ export class Reminder {
     if (opts.date && opts.time !== null) {
       this.uuid = opts.uuid || uuidv4();
       this.date = opts.date.toISOString();
-      this.time = opts.time;
+      this.startTime = opts.startTime;
+      this.endTime = opts.endTime;
       this.setColor(opts.color);
       this.setDescription(opts.description || 'Unnamed reminder');
     } else {
