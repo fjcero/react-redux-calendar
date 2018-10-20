@@ -6,7 +6,7 @@ import { createLogger } from 'redux-logger';
 
 import './index.css';
 import reducer from './reducers';
-import Calendar from './components/Calendar';
+import CalendarContainer from './containers/Calendar';
 import * as serviceWorker from './serviceWorker';
 
 const middlewares = [createLogger()];
@@ -14,7 +14,7 @@ const store = createStore(reducer, applyMiddleware(...middlewares));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Calendar />
+    <CalendarContainer />
   </Provider>,
   document.getElementById('root')
 );
