@@ -8,6 +8,7 @@
     "react-color": "^2.14.1",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
+    "react-responsive-modal": "^3.4.0",
     "react-scripts": "2.0.5",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
