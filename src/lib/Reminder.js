@@ -4,7 +4,7 @@ export class Reminder {
   constructor(opts) {
     if (opts.date && opts.time !== null) {
       this.uuid = opts.uuid || uuidv4();
-      this.date = opts.date.getUTCMilliseconds();
+      this.date = opts.date.toISOString();
       this.time = opts.time;
       this.color = opts.color;
       this.description = opts.description || 'Unnamed reminder';

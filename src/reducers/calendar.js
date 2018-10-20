@@ -25,13 +25,8 @@ const calendar = (state = defaultState, action) => {
     case types.CALENDAR_CREATE_REMINDER: {
       const { payload } = action;
 
-      state.month[payload.i][payload.j].reminders.push(
-        new Reminder({
-          date: payload.day.date,
-          time: 0,
-          color: 'FF0000',
-          description: 'test',
-        })
+      state.month[payload.weekIndex][payload.dayIndex].reminders.push(
+        new Reminder(payload.reminder)
       );
 
       return state;
