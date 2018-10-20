@@ -25,17 +25,32 @@ const calendar = (state = defaultState, action) => {
     case types.CALENDAR_CREATE_REMINDER: {
       const { payload } = action;
 
-      state.month[payload.weekIndex][payload.dayIndex].reminders.push(
+      const updatedMonth = state.month.slice();
+      updatedMonth[payload.weekIndex][payload.dayIndex].reminders.push(
         new Reminder(payload.reminder)
       );
 
-      return state;
+      return { ...state, month: updatedMonth };
     }
     case types.CALENDAR_UPDATE_REMINDER: {
-      return state;
+      const { payload } = action;
+
+      const updatedMonth = state.month.slice();
+      // updatedMonth[payload.weekIndex][payload.dayIndex].reminders.push(
+      //   new Reminder(payload.reminder)
+      // );
+
+      return { ...state, month: updatedMonth };
     }
     case types.CALENDAR_DELETE_REMINDER: {
-      return state;
+      const { payload } = action;
+
+      const updatedMonth = state.month.slice();
+      // updatedMonth[payload.weekIndex][payload.dayIndex].reminders.push(
+      //   new Reminder(payload.reminder)
+      // );
+
+      return { ...state, month: updatedMonth };
     }
     default:
       return state;

@@ -4,6 +4,7 @@ import Reminder from './Reminder';
 
 class CalendarMonth extends React.Component {
   render() {
+    console.log({ p: this.props });
     const { month, actions } = this.props;
 
     return (
@@ -22,7 +23,7 @@ class CalendarMonth extends React.Component {
                       date: day.date,
                       time: 0,
                       color: 'FF0000',
-                      description: 'test',
+                      description: 'LALALALA',
                     },
                   })
                 }
@@ -32,8 +33,8 @@ class CalendarMonth extends React.Component {
                 {day.reminders.length > 0 &&
                   day.reminders.map(reminder => (
                     <Reminder
-                      reminder={reminder}
                       key={reminder.uuid}
+                      reminder={reminder}
                       onUpdate={actions.updateReminder}
                       onDelete={actions.deleteReminder}
                     />

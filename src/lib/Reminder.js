@@ -6,20 +6,20 @@ export class Reminder {
       this.uuid = opts.uuid || uuidv4();
       this.date = opts.date.toISOString();
       this.time = opts.time;
-      this.color = opts.color;
-      this.description = opts.description || 'Unnamed reminder';
+      this.setColor(opts.color);
+      this.setDescription(opts.description || 'Unnamed reminder');
     } else {
       throw new Error('Undefined date or time');
     }
   }
 
-  set color(color) {
+  setColor(color) {
     const hexa = /[0-9A-Fa-f]{6}/g;
-    return hexa.test(color) ? `#${color}` : 'red';
+    this.color = hexa.test(color) ? `#${color}` : 'red';
   }
 
-  set description(description) {
+  setDescription(description) {
     const MAX_CHAR_SIZE = 30;
-    return description.substring(0, MAX_CHAR_SIZE);
+    this.description = description.substring(0, MAX_CHAR_SIZE);
   }
 }

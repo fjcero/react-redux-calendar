@@ -38,8 +38,20 @@ code {
 .calendar__day {
   text-align: center;
   width: 14.285%;
-  padding: 60px 0;
+  min-height: calc((100vh / 6) + 0px);
   border: 1px solid grey;
   margin-bottom: -1px;
   margin-right: -1px;
+}
+
+.reminder {
+  border-radius: 2px;
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.13);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 3px 6px;
+  margin: 3px;
+}
+.reminder__delete {
+  color: red;
+  right: 0;
 }

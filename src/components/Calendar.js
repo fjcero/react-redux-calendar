@@ -12,7 +12,7 @@ import CalendarMonth from './CalendarMonth';
 //   </div>
 // );
 
-const Calendar = props => {
+const Calendar = ({ month, actions, ...rest }) => {
   return (
     <div className="calendar">
       <div className="calendar__row calendar__header">
@@ -24,7 +24,7 @@ const Calendar = props => {
         <div>Fri</div>
         <div>Sat</div>
       </div>
-      <CalendarMonth month={props.month} actions={props.actions} />
+      <CalendarMonth month={month} actions={actions} {...rest} />
     </div>
   );
 };
