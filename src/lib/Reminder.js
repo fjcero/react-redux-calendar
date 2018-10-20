@@ -2,15 +2,14 @@ import uuidv4 from 'uuid/v4';
 
 export class Reminder {
   constructor(opts) {
-    if (opts.date && opts.time !== null) {
+    if (opts.startTime) {
       this.uuid = opts.uuid || uuidv4();
-      this.date = opts.date.toISOString();
       this.startTime = opts.startTime;
       this.endTime = opts.endTime;
-      this.setColor(opts.color);
+      this.setColor(opts.color.hex);
       this.setDescription(opts.description || 'Unnamed reminder');
     } else {
-      throw new Error('Undefined date or time');
+      throw new Error('Undefined date or startTime');
     }
   }
 

@@ -6,10 +6,13 @@ class ReminderForm extends React.Component {
   constructor(props) {
     super(props);
 
+    const date = new Date();
+
     this.state = {
       description: (props.reminder && props.reminder.description) || '',
       color: (props.reminder && props.reminder.color) || '#86EEA8',
-      startTime: (props.reminder && props.reminder.startTime) || new Date(),
+      startTime:
+        (props.reminder && props.reminder.startTime) || `${date.getHours()}:${date.getMinutes()}`,
       endTime: (props.reminder && props.reminder.endTime) || undefined,
     };
   }
@@ -37,32 +40,13 @@ class ReminderForm extends React.Component {
     this.setState({ color });
   };
 
-  // handleStartTimeChange = e => {
-  //   let time = e.target.value.split(':');
+  handleStartTimeChange = e => {
+    this.setState({ startTime: e.target.value });
+  };
 
-  //   const hours = time[0];
-  //   const minutes = time[1];
-
-  //   // this.setState({
-  //   //   startTime: `${parseInt(hours, 10) - 1}:${minutes}`,
-  //   // });
-  // };
-
-  // handleEndTimeChange = e => {
-  //   let time = e.target.value.split(':');
-
-  //   const hours = time[0];
-  //   const minutes = time[1];
-
-  //   this.props.date.set({
-  //     hour: hours,
-  //     minute: minutes,
-  //   });
-
-  //   // this.setState({
-  //   //   endTime: `${parseInt(hours, 10) - 1}:${minutes}`,
-  //   // });
-  // };
+  handleEndTimeChange = e => {
+    this.setState({ endTime: e.target.value });
+  };
 
   render() {
     return (
@@ -77,13 +61,8 @@ class ReminderForm extends React.Component {
           onChange={this.handleDescriptionChange}
         />
         <TwitterPicker color={this.state.color} onChangeComplete={this.handleColorChange} />
-        {/* <input
-          type="time"
-          value={this.state.startTime}
-          onChange={this.handleStartTimeChange}
-          // required={true}
-        />
-        <input type="time" value={this.state.endTime} onChange={this.handleEndTimeChange} /> */}
+        <input type="time" value={this.state.startTime} onChange={this.handleStartTimeChange} />
+        <input type="time" value={this.state.endTime} onChange={this.handleEndTimeChange} />
         <button type="submit">Create</button>
         {this.props.reminder && (
           <span
