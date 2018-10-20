@@ -11,7 +11,9 @@ class CalendarMonth extends React.Component {
           <div className="calendar__row calendar__week" key={i}>
             {week.map((day, j) => (
               <div className="calendar__day" key={j}>
-                <div onClick={() => actions.createReminder(day)}>{day.toDateString()}</div>
+                <div onClick={() => actions.createReminder({ week, i, day, j })}>
+                  {day.date.toDateString()}
+                </div>
               </div>
             ))}
           </div>

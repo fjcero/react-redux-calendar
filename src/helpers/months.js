@@ -14,7 +14,7 @@ const getMonth = (date = null, opts = {}) => {
   last.setMonth(last.getMonth() + 1);
   last.setDate(0);
 
-  let weekStartDay = 0; // Starts on sunday
+  let weekStartDay = opts.startDay || 0; // By default starts on sunday
 
   let formatDate =
     opts.formatDate ||
