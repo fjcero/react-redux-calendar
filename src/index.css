@@ -10,3 +10,29 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+}
+.calendar__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+.calendar__header {
+  background: red;
+}
+.calendar__header > div {
+  width: 14.285%;
+  text-align: center;
+}
+.calendar__month {
+}
+.calendar__week {
+}
+.calendar__day {
+  text-align: center;
+  width: 14.285%;
+}
