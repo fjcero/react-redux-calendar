@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import * as CalendarActions from '../actions';
 import Calendar from '../components/Calendar';
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  month: state.calendar.month,
+});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(CalendarActions, dispatch),

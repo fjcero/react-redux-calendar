@@ -1,6 +1,11 @@
 import * as types from '../constants/action-types';
+import { getMonth } from '../helpers';
 
-const calendar = (state = {}, action) => {
+const defaultState = {
+  month: getMonth(),
+};
+
+const calendar = (state = defaultState, action) => {
   switch (action.type) {
     case types.CALENDAR_NAV_PREV_MONTH: {
       return;

@@ -22,7 +22,10 @@ code {
   text-align: center;
 }
 .calendar__header {
-  background: red;
+  background: grey;
+  color: white;
+  font-weight: bold;
+  padding: 20px 0;
 }
 .calendar__header > div {
   width: 14.285%;
@@ -35,4 +38,8 @@ code {
 .calendar__day {
   text-align: center;
   width: 14.285%;
+  padding: 60px 0;
+  border: 1px solid grey;
+  margin-bottom: -1px;
+  margin-right: -1px;
 }
