@@ -14,7 +14,7 @@ export class Reminder {
   }
 
   setColor(color) {
-    const hexa = /^#[0-9A-Fa-f]{6}/g;
+    const hexa = /#[0-9A-Fa-f]{6}/g;
     this.color = hexa.test(color) ? color : 'red';
   }
 

@@ -9,12 +9,14 @@ class CalendarMonth extends React.Component {
   state = {
     showForm: false,
     reminder: null,
+    weekIndex: null,
+    dayIndex: null,
   };
 
-  onOpenModal = (e, reminder = null) => {
+  onOpenModal = (e, payload = {}) => {
     this.setState({
       showForm: true,
-      reminder,
+      ...payload,
     });
   };
 
@@ -22,12 +24,14 @@ class CalendarMonth extends React.Component {
     this.setState({
       showForm: false,
       reminder: null,
+      weekIndex: null,
+      dayIndex: null,
     });
   };
 
   render() {
     const { month, actions } = this.props;
-    const { showForm, reminder } = this.state;
+    const { showForm, weekIndex, dayIndex, reminder } = this.state;
 
     return (
       <div className="calendar__month">
@@ -39,7 +43,7 @@ class CalendarMonth extends React.Component {
                   className={classNames('calendar__day', {
                     calendar__day__sibling: day.siblingMonth !== 0,
                   })}
-                  onClick={this.onOpenModal}
+                  onClick={() => this.onOpenModal(null, { weekIndex, dayIndex })}
                 >
                   <span className="calendar__day__label">{day.date.getDate()}</span>
                   {day.reminders.length > 0 &&
@@ -47,7 +51,7 @@ class CalendarMonth extends React.Component {
                       <Reminder
                         key={reminder.uuid}
                         reminder={reminder}
-                        onUpdate={() => this.onOpenModal(null, reminder)}
+                        onUpdate={() => this.onOpenModal(null, { weekIndex, dayIndex, reminder })}
                       />
                     ))}
                 </div>
@@ -58,9 +62,12 @@ class CalendarMonth extends React.Component {
         <Modal open={showForm} onClose={this.onCloseModal}>
           <ReminderForm
             reminder={reminder}
-            onCreate={() => actions.createReminder}
-            onUpdate={() => actions.updateReminder}
-            onDelete={() => actions.deleteReminder}
+            weekIndex={weekIndex}
+            dayIndex={dayIndex}
+            onCreate={actions.createReminder}
+            onUpdate={actions.updateReminder}
+            onDelete={actions.deleteReminder}
+            onComplete={this.onCloseModal}
           />
         </Modal>
       </div>

@@ -19,17 +19,25 @@ class ReminderForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { weekIndex, dayIndex, reminder } = this.props;
 
-    if (this.props.reminder) {
-      const updatedReminder = Object.assign(this.props.reminder, this.state);
-      this.props.onUpdate(updatedReminder);
+    if (reminder) {
+      const updatedReminder = Object.assign(reminder, this.state);
+      this.props.onUpdate({
+        weekIndex,
+        dayIndex,
+        reminder: updatedReminder,
+      });
     } else {
-      this.props.onCreate(
-        new Reminder({
+      this.props.onCreate({
+        weekIndex,
+        dayIndex,
+        reminder: new Reminder({
           ...this.state,
-        })
-      );
+        }),
+      });
     }
+    this.props.onComplete();
   };
 
   handleDescriptionChange = e => {
@@ -63,13 +71,23 @@ class ReminderForm extends React.Component {
         <TwitterPicker color={this.state.color} onChangeComplete={this.handleColorChange} />
         <input type="time" value={this.state.startTime} onChange={this.handleStartTimeChange} />
         <input type="time" value={this.state.endTime} onChange={this.handleEndTimeChange} />
-        <button type="submit">Create</button>
+        <br />
+        <br />
+        <button type="submit">{this.props.reminder ? 'Update' : 'Create'}</button>
         {this.props.reminder && (
           <span
             onClick={e => {
               e.preventDefault();
-              this.props.onDelete(this.props.reminder);
+              if (window.confirm('You want to delete this reminder?')) {
+                this.props.onDelete({
+                  weekIndex: this.props.weekIndex,
+                  dayIndex: this.props.dayIndex,
+                  reminder: this.props.reminder,
+                });
+                this.props.onComplete();
+              }
             }}
+            style={{ color: 'red', float: 'right' }}
           >
             Delete
           </span>
