@@ -6,7 +6,7 @@ The goal of this exercise is to create a demo calendar application using React &
 
 You should start by rendering a single month view of a calendar for the current month – along with the lines of the below illustration:
 
-![alt text](https://github.com/codelittinc/react-redux-interview-project/blob/master/calendar.png?raw=true)
+![alt text](https://gitlab.com/codelittinc/react-redux-interview-project/blob/master/calendar.png?raw=true)
 
 
 ### Features & Requirements:
