@@ -44,7 +44,7 @@ class CalendarMonth extends React.Component {
                 <div
                   className={classNames('calendar__day', {
                     calendar__day__sibling: day.siblingMonth !== 0,
-                    calendar__day__today: day.date.getDate() === new Date().getDate(),
+                    calendar__day__today: day.date.toDateString() === new Date().toDateString(),
                   })}
                   onClick={() => this.onOpenModal(null, { day, weekIndex, dayIndex })}
                 >
