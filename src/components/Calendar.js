@@ -26,9 +26,11 @@ const Calendar = ({ month, actions, ...rest }) => {
       </div>
       <CalendarMonth month={month.weeks} actions={actions} {...rest} />
       <div className="calendar__footer">
-        <div onClick={() => actions.prevMonth()}>Prev</div>
-        <div onClick={() => actions.nextMonth()}>Next</div>
-        <div>Current Month: {month.id}</div>
+        <div className="calendar__footer__nav">
+          <div onClick={() => actions.prevMonth()}>Prev</div>
+          <div onClick={() => actions.nextMonth()}>Next</div>
+        </div>
+        <div className="calendar__footer__month">{month.id}</div>
       </div>
     </div>
   );

@@ -11,13 +11,13 @@ You should start by rendering a single month view of a calendar for the current 
 
 ### Features & Requirements:
 
-* Ability to add a new “reminder” (max 30 chars) for a user entered day and time.
-* Display reminders on the calendar view in the correct time order.
-* Allow the user to select a color when creating a reminder and display it appropriately.
-* Properly handle overflow when multiple reminders appear on the same date.
-* Ability to edit reminders – including changing text, day and time & color.
-* Ability to delete reminders.
-* Expand the calendar to support more than the current month.
+- [x] Ability to add a new “reminder” (max 30 chars) for a user entered day and time.
+- [x] Display reminders on the calendar view in the correct time order.
+- [x] Allow the user to select a color when creating a reminder and display it appropriately.
+- [ ] Properly handle overflow when multiple reminders appear on the same date.
+- [x] Ability to edit reminders – including changing text, day and time & color.
+- [x] Ability to delete reminders.
+- [x] Expand the calendar to support more than the current month.
 
 ### Notes:
 
