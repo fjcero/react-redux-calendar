@@ -1,36 +1,30 @@
 import React from 'react';
 import { TwitterPicker } from 'react-color';
+
 import { Reminder } from '../lib/Reminder';
+import { getDateHourMinutes, formatDateFromTime } from '../helpers/hours';
 
 class ReminderForm extends React.Component {
   constructor(props) {
     super(props);
 
-    const date = new Date();
-
     this.state = {
       description: (props.reminder && props.reminder.description) || '',
       color: (props.reminder && props.reminder.color) || '#86EEA8',
-      startTime:
-        (props.reminder && props.reminder.startTime) ||
-        `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`,
-      endTime: (props.reminder && props.reminder.endTime) || undefined,
+      startTime: (props.reminder && props.reminder.startTime) || getDateHourMinutes(new Date()),
+      duration: (props.reminder && props.reminder.endTime) || 30,
     };
   }
-
-  // getHour = () => {}
-
-  // formatDate = () => {
-  //   // const time = e.target.value.split(':');
-  //   // console.log({ a: this.props.date });
-  // }
 
   handleSubmit = e => {
     e.preventDefault();
     const { weekIndex, dayIndex, reminder } = this.props;
 
     if (reminder) {
-      const updatedReminder = Object.assign(reminder, this.state);
+      const updatedReminder = Object.assign(reminder, {
+        ...this.state,
+        startTime: formatDateFromTime(this.props.day.date, this.state.startTime),
+      });
       this.props.onUpdate({
         weekIndex,
         dayIndex,
@@ -42,6 +36,7 @@ class ReminderForm extends React.Component {
         dayIndex,
         reminder: new Reminder({
           ...this.state,
+          startTime: formatDateFromTime(this.props.day.date, this.state.startTime),
         }),
       });
     }
@@ -59,14 +54,12 @@ class ReminderForm extends React.Component {
   handleStartTimeChange = e => {
     this.setState({
       startTime: e.target.value,
-      startTimeDate: null,
     });
   };
 
-  handleEndTimeChange = e => {
+  handleDurationChange = e => {
     this.setState({
-      endTime: e.target.value,
-      endTimeDate: null,
+      duration: e.target.value,
     });
   };
 
@@ -77,14 +70,24 @@ class ReminderForm extends React.Component {
           type="text"
           maxLength={30}
           autoFocus={true}
-          placeholder="New reminder"
+          placeholder="New reminder description"
           value={this.state.description}
           required={true}
           onChange={this.handleDescriptionChange}
         />
+        <br />
+        <label>Color:</label>
         <TwitterPicker color={this.state.color} onChangeComplete={this.handleColorChange} />
+        <label>Start Time:</label>
         <input type="time" value={this.state.startTime} onChange={this.handleStartTimeChange} />
-        <input type="time" value={this.state.endTime} onChange={this.handleEndTimeChange} />
+        <label>Duration:</label>
+        <input
+          type="number"
+          step={1}
+          value={this.state.duration}
+          onChange={this.handleDurationChange}
+        />
+        mins
         <br />
         <br />
         <button type="submit">{this.props.reminder ? 'Update' : 'Create'}</button>

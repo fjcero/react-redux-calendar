@@ -57,7 +57,7 @@ const calendar = (state = defaultState, action) => {
 
       updatedMonth.weeks[payload.weekIndex][payload.dayIndex].reminders.push(payload.reminder);
       updatedMonth.weeks[payload.weekIndex][payload.dayIndex].reminders.sort(
-        (a, b) => new Date(b.date) - new Date(a.date)
+        (a, b) => new Date(a.startTime) - new Date(b.startTime)
       );
 
       return { ...state, month: updatedMonth };
@@ -69,7 +69,7 @@ const calendar = (state = defaultState, action) => {
 
       updatedMonth.weeks[payload.weekIndex][payload.dayIndex].reminders
         .map(reminder => (reminder.uuid === payload.reminder.uuid ? payload.reminder : reminder))
-        .sort((a, b) => new Date(b.date) - new Date(a.date));
+        .sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
       return { ...state, month: updatedMonth };
     }
