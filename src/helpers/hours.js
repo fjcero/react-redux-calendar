@@ -8,4 +8,8 @@ const formatDateFromTime = (date, hhmm) => {
   return d;
 };
 
-export { getDateHourMinutes, formatDateFromTime };
+const addMinutes = (date, minutes) => {
+  return new Date(date.getTime() + minutes * 60000);
+};
+
+export { getDateHourMinutes, formatDateFromTime, addMinutes };

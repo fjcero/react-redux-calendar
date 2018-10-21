@@ -79,11 +79,16 @@ class ReminderForm extends React.Component {
         <label>Color:</label>
         <TwitterPicker color={this.state.color} onChangeComplete={this.handleColorChange} />
         <label>Start Time:</label>
-        <input type="time" value={this.state.startTime} onChange={this.handleStartTimeChange} />
+        <input
+          type="time"
+          step={5}
+          value={this.state.startTime}
+          onChange={this.handleStartTimeChange}
+        />
         <label>Duration:</label>
         <input
           type="number"
-          step={1}
+          step={5}
           value={this.state.duration}
           onChange={this.handleDurationChange}
         />
