@@ -1,3 +1,15 @@
+const getDateByMonthOffset = (date = null, offset) => {
+  if (!date) date = new Date();
+
+  const d = new Date(date);
+  d.setDate(1);
+  d.setMonth(d.getMonth() + offset);
+
+  return d;
+};
+
+const getMonthId = date => `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}`;
+
 const getMonth = (date = null, opts = {}) => {
   if (!date) date = new Date();
 
@@ -54,7 +66,11 @@ const getMonth = (date = null, opts = {}) => {
 
   if (opts.formatHeader) lines.unshift(headers);
 
-  return lines;
+  return {
+    weeks: lines,
+    id: getMonthId(date),
+    date,
+  };
 
   function createDateOffset(date, offset) {
     var newDate = new Date(date);
@@ -67,4 +83,4 @@ const getMonth = (date = null, opts = {}) => {
   }
 };
 
-export { getMonth };
+export { getMonth, getMonthId, getDateByMonthOffset };

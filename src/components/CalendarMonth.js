@@ -11,7 +11,7 @@ class CalendarMonth extends React.Component {
     reminder: null,
     weekIndex: null,
     dayIndex: null,
-    day: null
+    day: null,
   };
 
   onOpenModal = (e, payload = {}) => {
@@ -27,7 +27,7 @@ class CalendarMonth extends React.Component {
       reminder: null,
       weekIndex: null,
       dayIndex: null,
-      day: null
+      day: null,
     });
   };
 
@@ -44,6 +44,7 @@ class CalendarMonth extends React.Component {
                 <div
                   className={classNames('calendar__day', {
                     calendar__day__sibling: day.siblingMonth !== 0,
+                    calendar__day__today: day.date.getDate() === new Date().getDate(),
                   })}
                   onClick={() => this.onOpenModal(null, { day, weekIndex, dayIndex })}
                 >
@@ -53,7 +54,9 @@ class CalendarMonth extends React.Component {
                       <Reminder
                         key={reminder.uuid}
                         reminder={reminder}
-                        onUpdate={() => this.onOpenModal(null, { day, weekIndex, dayIndex, reminder })}
+                        onUpdate={() =>
+                          this.onOpenModal(null, { day, weekIndex, dayIndex, reminder })
+                        }
                       />
                     ))}
                 </div>

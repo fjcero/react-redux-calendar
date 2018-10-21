@@ -31,6 +31,13 @@ code {
   width: 14.285%;
   text-align: center;
 }
+.calendar__footer {
+  display: flex;
+  padding: 10px;
+}
+.calendar__footer > div {
+  margin-right: 15px;
+}
 .calendar__month {
 }
 .calendar__week {
@@ -43,6 +50,9 @@ code {
   border: 1px solid grey;
   margin-bottom: -1px;
   margin-right: -1px;
+}
+.calendar__day__today {
+  box-shadow: inset 0 0 0 1px blue;
 }
 .calendar__day__label {
   position: absolute;

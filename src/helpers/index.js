@@ -1,1 +1,1 @@
-export { getMonth } from './months';
+export { getMonth, getMonthId, getDateByMonthOffset } from './months';

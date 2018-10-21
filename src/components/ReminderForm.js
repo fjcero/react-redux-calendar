@@ -12,7 +12,8 @@ class ReminderForm extends React.Component {
       description: (props.reminder && props.reminder.description) || '',
       color: (props.reminder && props.reminder.color) || '#86EEA8',
       startTime:
-        (props.reminder && props.reminder.startTime) || `${date.getHours()}:${date.getMinutes()}`,
+        (props.reminder && props.reminder.startTime) ||
+        `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`,
       endTime: (props.reminder && props.reminder.endTime) || undefined,
     };
   }
