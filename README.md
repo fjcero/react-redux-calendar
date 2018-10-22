@@ -6,8 +6,7 @@ The goal of this exercise is to create a demo calendar application using React &
 
 You should start by rendering a single month view of a calendar for the current month – along with the lines of the below illustration:
 
-![alt text](https://gitlab.com/codelittinc/react-redux-interview-project-francisco/blob/master/calendar.png?raw=true)
-
+![alt text](./calendar.png?raw=true)
 
 ### Features & Requirements:
 
@@ -21,5 +20,5 @@ You should start by rendering a single month view of a calendar for the current 
 
 ### Notes:
 
-* The data should be retained across different page views, but it’s not necessary to persist it beyond a browser refresh.
-* This is a coding activity and not a design activity. That’s not to say we don’t appreciate good design or that we don’t value those skills if you have them! It’s just that it won’t have a high value when scoring this particular project.
+- The data should be retained across different page views, but it’s not necessary to persist it beyond a browser refresh.
+- This is a coding activity and not a design activity. That’s not to say we don’t appreciate good design or that we don’t value those skills if you have them! It’s just that it won’t have a high value when scoring this particular project.
