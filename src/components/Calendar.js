@@ -2,16 +2,6 @@ import React from 'react';
 
 import CalendarMonth from './CalendarMonth';
 
-// const CalendarWeek = ({  }) => (
-//   <div>
-//   </div>
-// );
-
-// const CalendarDay = ({ day }) => (
-//   <div>
-//   </div>
-// );
-
 const Calendar = ({ month, actions, ...rest }) => {
   return (
     <div className="calendar">

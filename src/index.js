@@ -9,8 +9,8 @@ import reducer from './reducers';
 import CalendarContainer from './containers/Calendar';
 import * as serviceWorker from './serviceWorker';
 
-const middlewares = [createLogger()];
-const store = createStore(reducer, applyMiddleware(...middlewares));
+const middleware = createLogger();
+const store = createStore(reducer, applyMiddleware(middleware));
 
 ReactDOM.render(
   <Provider store={store}>

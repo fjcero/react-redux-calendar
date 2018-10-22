@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 
 import Reminder from './Reminder';
 import ReminderForm from './ReminderForm';
 import Modal from 'react-responsive-modal';
 
-class CalendarMonth extends React.Component {
+class CalendarMonth extends Component {
   state = {
     showForm: false,
     reminder: null,
@@ -40,7 +40,7 @@ class CalendarMonth extends React.Component {
         {month.map((week, weekIndex) => (
           <div className="calendar__row calendar__week" key={weekIndex}>
             {week.map((day, dayIndex) => (
-              <React.Fragment key={dayIndex}>
+              <Fragment key={dayIndex}>
                 <div
                   className={classNames('calendar__day', {
                     calendar__day__sibling: day.siblingMonth !== 0,
@@ -60,7 +60,7 @@ class CalendarMonth extends React.Component {
                       />
                     ))}
                 </div>
-              </React.Fragment>
+              </Fragment>
             ))}
           </div>
         ))}

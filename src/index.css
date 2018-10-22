@@ -102,3 +102,7 @@ code {
   left: 3px;
   top: 3px;
 }
+.reminder__form__delete {
+  color: red;
+  float: right;
+}

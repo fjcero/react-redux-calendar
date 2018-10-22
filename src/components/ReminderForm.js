@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TwitterPicker } from 'react-color';
 
 import { Reminder } from '../lib/Reminder';
 import { getDateHourMinutes, formatDateFromTime } from '../helpers/hours';
 
-class ReminderForm extends React.Component {
+class ReminderForm extends Component {
   constructor(props) {
     super(props);
 
@@ -109,7 +109,7 @@ class ReminderForm extends React.Component {
                 this.props.onComplete();
               }
             }}
-            style={{ color: 'red', float: 'right' }}
+            className="reminder__form__delete"
           >
             Delete
           </span>
